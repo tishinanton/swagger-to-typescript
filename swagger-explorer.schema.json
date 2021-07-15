@@ -16,6 +16,41 @@
                     }
                 }
             }
+        },
+        "sync-to-folder": {
+            "type": "string"
+        },
+        "skiped-namespaces": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "pattern": "^((startsWith)|(full)){1}:[^\\s]+$"
+            },
+            "additionalItems": false
+        },
+        "map-type-to": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "map": {
+                        "type": "string"
+                    },
+                    "to": {
+                        "type": "object",
+                        "properties": {
+                            "namespace": { "type": "string" },
+                            "name": { "type": "string" },
+                            "saveAs": {
+                                "type": "string",
+                                "enum": ["type", "name", "namespace.name"]
+                            }
+                        },
+                        "required": ["name"]
+                    }
+                },
+                "required": ["map", "to"]
+            }
         }
     }
 }
